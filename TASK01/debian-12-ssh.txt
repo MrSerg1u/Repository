@@ -1,0 +1,18 @@
+-Status SSH server:
+ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/lib/systemd/system/ssh.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2024-07-05 04:34:18 CDT; 11s ago
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+   Main PID: 8870 (sshd)
+      Tasks: 1 (limit: 6925)
+     Memory: 1.5M
+        CPU: 20ms
+     CGroup: /system.slice/ssh.service
+             └─8870 "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
+
+Jul 05 04:34:18 debian systemd[1]: Starting ssh.service - OpenBSD Secure Shell >
+Jul 05 04:34:18 debian sshd[8870]: Server listening on 0.0.0.0 port 22.
+Jul 05 04:34:18 debian sshd[8870]: Server listening on :: port 22.
+Jul 05 04:34:18 debian systemd[1]: Started ssh.service - OpenBSD Secure Shell s>
+
