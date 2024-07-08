@@ -1,4 +1,5 @@
 -System Information
+-command: hostnamectl
 Static hostname: debian
        Icon name: computer-vm
          Chassis: vm 🖴
@@ -15,11 +16,15 @@ Firmware Version: VirtualBox
 
 
 -Memory information:
+-command: free -h
                total        used        free      shared  buff/cache   available
 Mem:           5.7Gi       1.5Gi       3.3Gi        14Mi       1.1Gi       4.2Gi
 Swap:          975Mi          0B       975Mi
 
+
+
 -CPU information:
+-command: lscpu
 Architecture:             x86_64
   CPU op-mode(s):         32-bit, 64-bit
   Address sizes:          39 bits physical, 48 bits virtual
@@ -74,6 +79,8 @@ Vulnerabilities:
 
 
 -Ring kernel buffer:
+-command: sudo dmesg
+
 [    0.000000] Linux version 6.1.0-22-amd64 (debian-kernel@lists.debian.org) (gcc-12 (Debian 12.2.0-14) 12.2.0, GNU ld (GNU Binutils for Debian) 2.40) #1 SMP PREEMPT_DYNAMIC Debian 6.1.94-1 (2024-06-21)
 [    0.000000] Command line: BOOT_IMAGE=/boot/vmlinuz-6.1.0-22-amd64 root=UUID=f2a66c91-628a-4e28-868c-19d45f5b3af5 ro quiet
 [    0.000000] BIOS-provided physical RAM map:
@@ -722,6 +729,7 @@ Vulnerabilities:
 
 
 -Tree of Processes:
+-command: pstree
 
 systemd─┬─ModemManager───2*[{ModemManager}]
         ├─NetworkManager───2*[{NetworkManager}]
@@ -826,6 +834,7 @@ systemd─┬─ModemManager───2*[{ModemManager}]
 
 
 - List of All installed Packages:
+-command: apt list --installed
 
 accountsservice/stable,now 22.08.8-6 amd64 [installed,automatic]
 acl/stable,now 2.3.1-3 amd64 [installed,automatic]
@@ -2435,6 +2444,7 @@ zstd/stable,now 1.5.4+dfsg2-5 amd64 [installed]
 
 
 - List of All installed Packages (after debloating):
+-command: apt list --intalled
 
 accountsservice/stable,now 22.08.8-6 amd64 [installed,automatic]
 acl/stable,now 2.3.1-3 amd64 [installed,automatic]
@@ -3952,6 +3962,7 @@ zstd/stable,now 1.5.4+dfsg2-5 amd64 [installed]
 
 
 - List of all running Services:
+-command: systemctl
 
   UNIT                                                                                     LOAD   ACTIVE SUB       DESCRIPTION                                                      
   proc-sys-fs-binfmt_misc.automount                                                        loaded active running   Arbitrary Executable File Formats File System Automount Point    
@@ -4095,6 +4106,7 @@ zstd/stable,now 1.5.4+dfsg2-5 amd64 [installed]
 
 
 - List of all running Services (after debloating):
+-command: systemctl
 
 UNIT                                                                                     LOAD   ACTIVE SUB       DESCRIPTION                                                      
   proc-sys-fs-binfmt_misc.automount                                                        loaded active running   Arbitrary Executable File Formats File System Automount Point    
@@ -4239,12 +4251,14 @@ UNIT                                                                            
 
 
 - Linux Kernel Information:
+-command: uname -a
 
 Linux debian 6.1.0-22-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.94-1 (2024-06-21) x86_64 GNU/Linux
 
 
 
 -Update system to the latest Debian 12 version from the command line:
+-command: sudo apt update
 
 Hit:1 http://security.debian.org/debian-security bookworm-security InRelease
 Hit:2 http://deb.debian.org/debian bookworm InRelease
@@ -4263,6 +4277,7 @@ Calculating upgrade... Done
 
 
 -Install SSH Server:
+-command: sudo apt install openssh-server -y
 
 Reading package lists... Done
 Building dependency tree... Done
