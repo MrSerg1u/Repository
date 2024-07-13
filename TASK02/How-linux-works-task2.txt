@@ -1,0 +1,75 @@
+Chapter 1: THE BIG PICTURE
+
+All info from this chapter was already known information
+
+
+Chapter 2: BASIC COMMANDS AND DIRECTORY HIERARCHY
+
+  1)  I learned what is a Symbolic link and how to work with them.
+Symbolic links offer quick acces to obscure directory paths
+To create a symbolic link from target to linkname, use ln -s as follows:
+ $ ln -s target linkname 
+The linkname argument is the name of the symbolic link, the target argument is the path of the file
+ or directory that the link points to, and the -s flag specifies a symbolic link (see the warning that follows).
+
+  2) Achiving and compressing files. I learned how to compress files in two ways, with command:
+$ gzip file 
+$ tar cvf archive.tar file1 file2
+For example, in the previous command, file1, file2, and so on are the names of the files and directories that you wish to archive in <archive>.tar.
+And for unpacking files is used commands:
+$ gunzip file.gz   
+$ tar xvf archive.tar 
+
+  3) Explored directory hierarchy and find out the essentials. 
+/bin Contains ready-to-run programs
+/dev Contains device files.
+etc This core system configuration directory contains the user password, boot, device, networking, and other setup files.
+/home Holds home (personal) directories for regular users. Most Unix installations conform to this standard.
+/lib An abbreviation for library, this directory holds library files containing code that executables can use.
+/proc Provides system statistics through a browsable directory-and-file interface.
+/run Contains runtime data specific to the system, including certain process IDs, socket files, status records, and, in many cases, system logging.
+/tmp A storage area for smaller, temporary files that you don’t care much about.
+/sys This directory is similar to /proc in that it provides a device and system interface. 
+
+
+
+
+
+Chapter 3: DEVICES
+
+1)  Device Files: In Linux, each hardware device is represented by a file in the /dev directory. These files allow users and applications to interact with system hardware through standard file operations (reading, writing, etc.).
+
+2)  Device file creation: The mknod command creates one device. You must know the device name as well as its major and minor numbers.
+command: $ mknod /dev/sda1 b 8 1
+The b 8 1 specifies a block device with a major number 8 and a minor number 1.
+
+3)  Udev: udev is a device manager for the Linux kernel that dynamically creates and removes device files in /dev based on hardware events. udev also allows for the automatic configuration of device permissions and settings.
+to look at all of the udev attributes we will use command:
+$ udevadm info --query=all --name=/dev/sda
+
+
+
+
+
+Chapter 4: Disks and filesystems
+
+1)  LVM (Logical Volume Manager): LVM allows for flexible disk management by abstracting physical storage into logical volumes. Volume Group (VG) is a collection of one or more Physical Volumes (PVs). These are pooled together to create a unified storage space from which logical volumes can be created and managed.
+To view information about existing Volume Groups:
+$ vgdisplay
+
+Listing Logical Volumes:
+$ lvs
+
+Creating Physical Volumes and a Volume Group:
+$ vgcreate myvg /dev/sdb1
+
+To add additional PVs to an existing VG:
+$ vgextend myvg /dev/sdc1
+
+Removing Logical Volumes:
+$ lvremove myvg/mylv2
+
+2)  Partitions: Disks are divided into partitions, each of which can be managed independently. Tools like fdisk, parted, and gdisk are used to create and manage partitions.MBR and GPT: The Master Boot Record (MBR) and GUID Partition Table (GPT) are two common partitioning schemes. MBR is older and supports up to 4 primary partitions, while GPT is newer and supports more partitions and larger disks
+
+3)  Filesystems: A filesystem is a method for storing and organizing files on a disk. Common filesystems in Linux include ext4, XFS, Btrfs, and more. Mounting: To access files on a filesystem, it must be mounted to a directory. The mount command and /etc/fstab file are used to manage mounts.
+

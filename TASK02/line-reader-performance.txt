@@ -1,0 +1,16 @@
+Performance Comparison between USB-mounted and RAM-mounted setups:
+
+USB-mounted setup:
+- Execution time: 9.57 seconds               
+
+RAM-mounted setup:
+- Execution time: 8.40 seconds 
+
+Conclusion:
+- The RAM-mounted setup showed better performance compared to the USB-mounted setup.
+
+
+
+
+
+              
